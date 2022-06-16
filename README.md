@@ -75,6 +75,20 @@ simply run the following from the repo root:
 ```sh
 ./scripts/schema.sh
 ```
+## Uploading contracts w/ GitHub Actions`
+Contracts will be compiled, optimized, and uploaded using a service wallet.
+
+- **testnet** changes to files under `contracts/` get pushed to a branch whose name starts with `upload/`
+- **mainnet** new commits to `main` (e.g. following a pull request being merged)
+
+Corresponding GitHub Action Secrets need to be configured, containing at a mininimum correct values for the folllowing Secrets:
+
+- `JUNO_CHAIN_ID`
+- `JUNO_DENOM`
+- `JUNO_RPC_NODE`
+- `DAO_UPLOAD_NINJA`
+
+The expectation is that a _funded_ `service_wallet` is added to local `junod` config and is used to store the resulting `.wasm` artifact for every compiled contract on-chain.
 
 ## Disclaimer
 
